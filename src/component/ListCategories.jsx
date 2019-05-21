@@ -12,6 +12,7 @@ class ListCategories extends Component {
         };
         this.refreshGroceryCategories = this.refreshGroceryCategories.bind(this);
         this.addGroceryCategoryClicked = this.addGroceryCategoryClicked.bind(this);
+        this.listItemsUnderCategory = this.listItemsUnderCategory.bind(this);
     }
 
     componentDidMount() {
@@ -32,6 +33,11 @@ class ListCategories extends Component {
         this.props.history.push(`/category/-1`)
     }
 
+    listItemsUnderCategory(id) {
+        const uri = `/category/${id}`;
+        this.props.history.push(uri);
+    }
+
     render() {
         return (
             <div className="container">
@@ -42,6 +48,7 @@ class ListCategories extends Component {
                     <tr>
                         <th>ID</th>
                         <th>Grocery Category</th>
+                        <th>Category Items</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -51,17 +58,22 @@ class ListCategories extends Component {
                                 <tr key={category.categoryId}>
                                     <td>{category.categoryId}</td>
                                     <td>{category.categoryName}</td>
+                                    <td>
+                                        <button className="btn btn-success btn-two"
+                                                onClick={() => this.listItemsUnderCategory(category.categoryId)}>
+                                            View Items under {category.categoryName}
+                                        </button>
+                                    </td>
                                 </tr>
                         )
                     }
                     </tbody>
                 </table>
                 <div className="row row1">
-                    <button className="btn btn-success btn-one" onClick={this.addGroceryCategoryClicked}>Add a Grocery Category</button>
-                </div>
-
-                <div className="row row1">
-                    <button className="btn btn-success btn-one" onClick={this.addGroceryItemClicked}>View Items Category Wise</button>
+                    <button className="btn btn-success btn-one"
+                            onClick={this.addGroceryCategoryClicked}>
+                        Add a Grocery Category
+                    </button>
                 </div>
             </div>
         )

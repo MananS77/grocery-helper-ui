@@ -10,6 +10,14 @@ class Category extends Component {
             categoryName: ''
         };
     }
+
+    render() {
+        return (
+            <div>
+
+            </div>
+        )
+    }
 }
 
 export default Category

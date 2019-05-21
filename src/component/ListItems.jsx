@@ -96,11 +96,17 @@ class ListItems extends Component {
                     </tbody>
                 </table>
                 <div className="row row1">
-                    <button className="btn btn-success btn-one" onClick={this.addGroceryItemClicked}>Add a Grocery Item</button>
+                    <button className="btn btn-success btn-one"
+                            onClick={this.addGroceryItemClicked}>
+                        Add a Grocery Item
+                    </button>
                 </div>
 
                 <div className="row row1">
-                    <button className="btn btn-success btn-one" onClick={this.refreshGroceryCategories}>View All Categories</button>
+                    <button className="btn btn-success btn-one"
+                            onClick={this.refreshGroceryCategories}>
+                        View All Categories
+                    </button>
                 </div>
             </div>
         )
