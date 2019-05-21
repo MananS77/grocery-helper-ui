@@ -1,3 +1,19 @@
+# Grocery Helper UI
+This is the React based UI for the Grocery Helper Spring Boot Application at 
+```
+https://github.com/MananS77/grocery-helper-backend
+```
+
+I have used `Bootstrap` for styling, and `Formik` for form-based input data
+
+## Docker Information - 
+Docker pull 
+```
+https://hub.docker.com/r/manans77/grocery-helper-ui
+```
+
+##
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
