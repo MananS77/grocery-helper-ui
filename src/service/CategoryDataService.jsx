@@ -4,6 +4,7 @@ const GROCERY_API_URL = 'http://localhost:8080';
 const CATEGORY_URI = 'grocery/category';
 const ITEMS_UNDER_CATEGORY_URI = '/grocery/category/items';
 const ALL_CATEGORIES_API_URL = `${GROCERY_API_URL}/${CATEGORY_URI}`;
+const ALL_ITEMS_UNDER_CATEGORY_API_URL = `${GROCERY_API_URL}/${ITEMS_UNDER_CATEGORY_URI}`;
 
 class ItemDataService {
 
@@ -20,7 +21,7 @@ class ItemDataService {
     }
 
     retrieveItemsUnderGroceryCategory(id) {
-        return axios.get(`${ITEMS_UNDER_CATEGORY_URI}`, {
+        return axios.get(`${ALL_ITEMS_UNDER_CATEGORY_API_URL}`, {
             params: {
                 categoryId: id
             }

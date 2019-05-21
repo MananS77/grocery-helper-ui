@@ -3,6 +3,7 @@ import ListItems from "./ListItems";
 import Item from "./Item";
 import ListCategories from "./ListCategories";
 import Category from "./Category";
+import NewCategory from "./NewCategory";
 import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 
 class GroceryHelperApp extends Component {
@@ -16,6 +17,7 @@ class GroceryHelperApp extends Component {
                         <Route path="/item/:id" exact component={Item}/>
                         <Route path="/category" exact component={ListCategories}/>
                         <Route path="/category/:id" exact component={Category}/>
+                        <Route path="/category/new" exact component={NewCategory}/>
                     </Switch>
                 </div>
             </Router>

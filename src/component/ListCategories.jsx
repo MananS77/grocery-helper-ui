@@ -30,7 +30,7 @@ class ListCategories extends Component {
     }
 
     addGroceryCategoryClicked() {
-        this.props.history.push(`/category/-1`)
+        this.props.history.push(`/category/new`)
     }
 
     listItemsUnderCategory(id) {
