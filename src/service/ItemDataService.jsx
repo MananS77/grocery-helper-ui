@@ -4,7 +4,7 @@ const GROCERY_API_URL = 'http://localhost:8080';
 const ITEM_URI = 'grocery/item';
 const ALL_ITEMS_API_URL = `${GROCERY_API_URL}/${ITEM_URI}`;
 
-class CourseDataService {
+class ItemDataService {
 
     retrieveAllGroceryItems() {
         return axios.get(`${ALL_ITEMS_API_URL}`);
@@ -29,4 +29,4 @@ class CourseDataService {
      */
 }
 
-export default new CourseDataService()
+export default new ItemDataService()

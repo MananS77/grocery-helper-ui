@@ -14,6 +14,7 @@ class ListItems extends Component {
         this.deleteGroceryItemClicked = this.deleteGroceryItemClicked.bind(this);
         this.updateGroceryItemClicked = this.updateGroceryItemClicked.bind(this);
         this.addGroceryItemClicked = this.addGroceryItemClicked.bind(this);
+        this.refreshGroceryCategories = this.refreshGroceryCategories.bind(this);
     }
 
     componentDidMount() {
@@ -44,11 +45,14 @@ class ListItems extends Component {
                     this.refreshGroceryItems()
                 }
             )
-
     }
 
     addGroceryItemClicked() {
-        this.props.history.push(`/item/-1`)
+        this.props.history.push(`/item/-1`);
+    }
+
+    refreshGroceryCategories() {
+        this.props.history.push(`/category`);
     }
 
     render() {
@@ -59,7 +63,7 @@ class ListItems extends Component {
                 <table className="table">
                     <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>ID</th>
                         <th>Grocery Item</th>
                         <th>Category</th>
                         <th>Update</th>
@@ -91,8 +95,12 @@ class ListItems extends Component {
                         }
                     </tbody>
                 </table>
-                <div className="row">
-                    <button className="btn btn-success" onClick={this.addGroceryItemClicked}>Add a Grocery Item</button>
+                <div className="row row1">
+                    <button className="btn btn-success btn-one" onClick={this.addGroceryItemClicked}>Add a Grocery Item</button>
+                </div>
+
+                <div className="row row1">
+                    <button className="btn btn-success btn-one" onClick={this.refreshGroceryCategories}>View All Categories</button>
                 </div>
             </div>
         )
