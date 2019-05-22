@@ -155,7 +155,7 @@ class Item extends Component {
                                                value={this.state.categoryId}
                                         />
                                     </fieldset>
-                                    <button className="btn btn-success" type="submit">Save</button>
+                                    <button className="btn btn-success btn-one" type="submit">Save</button>
                                 </Form>
                             )
                         }
