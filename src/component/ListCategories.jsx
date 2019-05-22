@@ -13,6 +13,7 @@ class ListCategories extends Component {
         this.refreshGroceryCategories = this.refreshGroceryCategories.bind(this);
         this.addGroceryCategoryClicked = this.addGroceryCategoryClicked.bind(this);
         this.listItemsUnderCategory = this.listItemsUnderCategory.bind(this);
+        this.backToItems = this.backToItems.bind(this);
     }
 
     componentDidMount() {
@@ -36,6 +37,10 @@ class ListCategories extends Component {
     listItemsUnderCategory(id) {
         const uri = `/category/${id}`;
         this.props.history.push(uri);
+    }
+
+    backToItems () {
+        this.props.history.push('/item');
     }
 
     render() {
@@ -69,10 +74,18 @@ class ListCategories extends Component {
                     }
                     </tbody>
                 </table>
+
                 <div className="row row1">
                     <button className="btn btn-success btn-one"
                             onClick={this.addGroceryCategoryClicked}>
                         Add a Grocery Category
+                    </button>
+                </div>
+
+                <div className="row row1">
+                    <button className="btn btn-success btn-one"
+                            onClick={this.backToItems}>
+                        Back to Home
                     </button>
                 </div>
             </div>

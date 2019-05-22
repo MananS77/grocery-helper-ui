@@ -73,7 +73,7 @@ class Category extends Component {
                 <div className="row row1">
                     <button className="btn btn-success btn-one"
                             onClick={this.backToItems}>
-                        Back to Items
+                        Back to Home
                     </button>
                 </div>
             </div>
