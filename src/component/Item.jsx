@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import ItemDataService from '../service/ItemDataService';
 
 class Item extends Component {
@@ -71,6 +71,7 @@ class Item extends Component {
             return;
         }
 
+        // eslint-disable-next-line
         if (this.state.itemId == -1) {
             let newItem = {
                 itemName: this.state.itemName,
@@ -97,6 +98,8 @@ class Item extends Component {
     
     render() {
         let itemId = this.state.itemId || '';
+
+        // eslint-disable-next-line
         if (itemId == -1) {
             itemId = '';
         }

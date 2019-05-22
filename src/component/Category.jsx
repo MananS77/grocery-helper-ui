@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import CategoryDataService from '../service/CategoryDataService';
+import React, {Component} from "react";
+import CategoryDataService from "../service/CategoryDataService";
 
 class Category extends Component {
     constructor(props) {
@@ -29,11 +28,11 @@ class Category extends Component {
             }))
     }
 
-    backToCategories () {
+    backToCategories() {
         this.props.history.push('/category');
     }
 
-    backToItems () {
+    backToItems() {
         this.props.history.push('/item');
     }
 
