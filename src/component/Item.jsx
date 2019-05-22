@@ -108,11 +108,11 @@ class Item extends Component {
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label>Category</label>
-                                        <Field className="form-control" type="text" name="category[1]" />
+                                        <Field className="form-control" type="text" name="category[1]" disabled/>
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label>Category ID</label>
-                                        <Field className="form-control" type="text" name="category[0]" />
+                                        <Field className="form-control" type="text" name="category[0]" disabled/>
                                     </fieldset>
                                     <button className="btn btn-success" type="submit">Save</button>
                                 </Form>
