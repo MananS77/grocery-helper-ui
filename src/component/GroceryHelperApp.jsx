@@ -17,7 +17,7 @@ class GroceryHelperApp extends Component {
                         <Route path="/item/:id" exact component={Item}/>
                         <Route path="/category" exact component={ListCategories}/>
                         <Route path="/category/:id" exact component={Category}/>
-                        <Route path="/category/new" exact component={NewCategory}/>
+                        <Route path="/category/new/-1" exact component={NewCategory}/>
                     </Switch>
                 </div>
             </Router>
