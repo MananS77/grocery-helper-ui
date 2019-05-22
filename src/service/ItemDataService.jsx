@@ -22,11 +22,13 @@ class ItemDataService {
         return axios.put(`${ALL_ITEMS_API_URL}`, item);
     }
 
-    /*
-    updateGroceryItem(item, categoryId, categoryName) {
-        return axios.post(`${ALL_ITEMS_API_URL}`, item);
+    updateGroceryItem(id, newItemName) {
+        return axios.post(`${ALL_ITEMS_API_URL}/${id}`, null, {
+            params: {
+                newItemName: newItemName
+            }
+        });
     }
-     */
 }
 
 export default new ItemDataService()

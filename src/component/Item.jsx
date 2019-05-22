@@ -12,8 +12,10 @@ class Item extends Component {
             categoryName: ''
         };
 
-        this.onSubmit = this.onSubmit.bind(this);
-        this.validate = this.validate.bind(this);
+        this.validateForm = this.validateForm.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.updateItem = this.updateItem.bind(this);
     }
 
     componentDidMount() {
@@ -31,46 +33,32 @@ class Item extends Component {
             }))
     }
 
-    validate(values) {
-        let errors = {};
-        if (!values.itemName) {
-            errors.description = 'Enter a name';
-        } else if (!values.categoryName) {
-            errors.description = 'Enter a category';
-        }
-        return errors;
+    validateForm() {
+        return this.state.itemName.length > 0;
     }
 
-    onSubmit(...values) {
-        console.log(values);
+    handleChange = event => {
+        this.setState({
+            itemName: event.target.value
+        });
+    };
 
-        let item = {
-            itemId: this.state.itemId,
-            itemName: values.itemName,
-            itemCategory: {
-                categoryId: values.categoryId,
-                categoryName: values.categoryName
-            }
-        };
+    handleSubmit = async event => {
 
-        let newItem = {
-            itemName: values.itemName,
-            itemCategory: {
-                categoryId: values.categoryId,
-                categoryName: values.categoryName
-            }
-        };
-
-        if (this.state.itemId === -1) {
-            ItemDataService.createGroceryItem(newItem)
-                .then(() => this.props.history.push('/item'))
-        } else {
-            /*ItemDataService.updateGroceryItem(this.state.itemId, this.state.categoryId, this.state.categoryName)
-                .then(() => this.props.history.push('/item'))*/
+        event.preventDefault();
+        if(this.state.itemName.length <= 0) {
+            alert(`Item Name can't be empty. Please enter a name`);
+            return;
         }
+
+        this.updateItem(this.state.itemId, this.state.itemName);
+    };
+
+    updateItem(id, itemName) {
+        ItemDataService.updateGroceryItem(id, itemName)
+            .then(() => this.props.history.push('/item'))
     }
-
-
+    
     render() {
         let itemId = this.state.itemId || '';
         if (itemId == -1) {
@@ -89,22 +77,25 @@ class Item extends Component {
                             item: [itemId, itemName],
                             category: [categoryId, categoryName]
                         }}
-                        onSubmit={this.onSubmit(itemId, itemName, categoryId, categoryName)}
-                        validateOnChange={false}
+                        onSubmit={this.handleSubmit}
+                        validateOnChange={this.handleChange}
                         validateOnBlur={false}
-                        validate={this.validate}
+                        validate={this.validateForm}
                         enableReinitialize={true}
                     >
                         {
                             (props) => (
-                                <Form>
+                                <Form onSubmit={this.handleSubmit}>
                                     <fieldset className="form-group">
                                         <label>Id</label>
                                         <Field className="form-control" type="text" name="item[0]" disabled />
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label>Grocery Name</label>
-                                        <Field className="form-control" type="text" name="item[1]" />
+                                        <Field className="form-control" type="text" name="item[1]" autoFocus
+                                               onChange={this.handleChange}
+                                               value={this.state.itemName}
+                                        />
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label>Category</label>
