@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9f47d89-b48f-447c-b7eb-b324e7bf67b9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/component/Category.jsx" afterPath="$PROJECT_DIR$/src/component/Category.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/component/ListCategories.jsx" afterPath="$PROJECT_DIR$/src/component/ListCategories.jsx" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,14 +44,6 @@
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>/</find>
-      <find>/items</find>
-      <find>.</find>
-      <find>.row</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -622,12 +612,12 @@
       <updated>1558413423757</updated>
       <workItem from="1558413425181" duration="20938000" />
       <workItem from="1558451019062" duration="20000" />
-      <workItem from="1558514056181" duration="1592000" />
+      <workItem from="1558514056181" duration="1878000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22550000" />
+    <option name="totallyTimeSpent" value="22836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -673,10 +663,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/component/ListCategories.jsx">
