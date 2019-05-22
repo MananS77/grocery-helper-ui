@@ -9,12 +9,14 @@ class Item extends Component {
             itemId: this.props.match.params.id,
             itemName: '',
             categoryId: '',
-            categoryName: ''
+            categoryName: '',
+            isUpdateExistingItem: null
         };
 
         this.validateForm = this.validateForm.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.createItem = this.createItem.bind(this);
         this.updateItem = this.updateItem.bind(this);
     }
 
@@ -22,24 +24,32 @@ class Item extends Component {
 
         // eslint-disable-next-line
         if (this.state.itemId == -1) {
+            this.setState({
+                isUpdateExistingItem: false
+            });
             return;
+        } else {
+            this.setState({
+                isUpdateExistingItem: true
+            });
+            ItemDataService.retrieveSpecificGroceryItem(this.state.itemId)
+                .then(response => this.setState({
+                    itemName: response.data.itemName,
+                    categoryId: response.data.itemCategory.categoryId,
+                    categoryName: response.data.itemCategory.categoryName
+                }))
         }
-
-        ItemDataService.retrieveSpecificGroceryItem(this.state.itemId)
-            .then(response => this.setState({
-                itemName: response.data.itemName,
-                categoryId: response.data.itemCategory.categoryId,
-                categoryName: response.data.itemCategory.categoryName
-            }))
     }
 
     validateForm() {
-        return this.state.itemName.length > 0;
+        return this.state.itemName.length > 0
+            && this.state.categoryName.length > 0
+            && this.state.categoryId.length > 0;
     }
 
     handleChange = event => {
         this.setState({
-            itemName: event.target.value
+            [event.target.id]: event.target.value
         });
     };
 
@@ -51,8 +61,34 @@ class Item extends Component {
             return;
         }
 
-        this.updateItem(this.state.itemId, this.state.itemName);
+        if(this.state.categoryName.length <= 0) {
+            alert(`Category name can't be empty. Please enter a name`);
+            return;
+        }
+
+        if(this.state.categoryId.length <= 0) {
+            alert(`Category ID can't be empty. Please enter  valid ID`);
+            return;
+        }
+
+        if (this.state.itemId == -1) {
+            let newItem = {
+                itemName: this.state.itemName,
+                itemCategory: {
+                    categoryId: this.state.categoryId,
+                    categoryName: this.state.categoryName
+                }
+            };
+            this.createItem(newItem);
+        } else {
+            this.updateItem(this.state.itemId, this.state.itemName);
+        }
     };
+
+    createItem(item) {
+        ItemDataService.createGroceryItem(item)
+            .then(() => this.props.history.push('/item'))
+    }
 
     updateItem(id, itemName) {
         ItemDataService.updateGroceryItem(id, itemName)
@@ -93,17 +129,28 @@ class Item extends Component {
                                     <fieldset className="form-group">
                                         <label>Grocery Name</label>
                                         <Field className="form-control" type="text" name="item[1]" autoFocus
+                                               id="itemName"
                                                onChange={this.handleChange}
                                                value={this.state.itemName}
                                         />
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label>Category</label>
-                                        <Field className="form-control" type="text" name="category[1]" disabled/>
+                                        <Field className="form-control" type="text" name="category[1]"
+                                               id="categoryName"
+                                               disabled={this.state.isUpdateExistingItem}
+                                               onChange={this.handleChange}
+                                               value={this.state.categoryName}
+                                        />
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label>Category ID</label>
-                                        <Field className="form-control" type="text" name="category[0]" disabled/>
+                                        <Field className="form-control" type="text" name="category[0]"
+                                               id="categoryId"
+                                               disabled={this.state.isUpdateExistingItem}
+                                               onChange={this.handleChange}
+                                               value={this.state.categoryId}
+                                        />
                                     </fieldset>
                                     <button className="btn btn-success" type="submit">Save</button>
                                 </Form>
