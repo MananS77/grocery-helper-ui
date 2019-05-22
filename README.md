@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/MananS77/grocery-helper-ui.svg?branch=master)](https://travis-ci.org/MananS77/grocery-helper-ui)
+
+
 # Grocery Helper UI
 This is the React based UI for the Grocery Helper Spring Boot Application at 
 ```
